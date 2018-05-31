@@ -1,0 +1,21 @@
+{
+    "name": "mobianglobal/reseller-api-php",
+    "description": "The MOBIAN Global reseller API package.",
+    "license": "MIT",
+    "homepage": "https://mobian.global/",
+    "authors": [
+        {
+            "name": "Lars Grevelink",
+            "email": "lars.grevelink@mobian.global"
+        }
+    ],
+    "require": {
+        "php": "^5.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MobianApi\\": ""
+        }
+    },
+    "minimum-stability": "dev"
+}
