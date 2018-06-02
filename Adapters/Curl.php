@@ -31,7 +31,7 @@ class Curl
     {
         $url = ApiConfig::getHostname() . $request->getEndpoint();
 
-        if (in_array($request->getMethod(), ['get', 'delete'])) {
+        if ($request->hasParams()) {
             $url .= '?' . http_build_query($request->getParams());
         }
 
@@ -49,9 +49,16 @@ class Curl
             CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_URL => $url,
             CURLOPT_HTTPHEADER => [
+                'Content-Type: application/json',
                 'X-Auth-Token: ' . ApiConfig::getAuthKey(),
             ],
         ];
+
+        if ($request->hasContents()) {
+            $options += [
+                CURLOPT_POSTFIELDS => json_encode($request->getContents()),
+            ];
+        }
 
         $curl = curl_init();
 

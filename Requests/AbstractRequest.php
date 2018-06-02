@@ -47,11 +47,18 @@ abstract class AbstractRequest
     protected $endpoint = '/hb';
 
     /**
-     * Parameter collection.
+     * Query parameter collection.
      *
      * @var array
      */
     protected $params;
+
+    /**
+     * Content collection.
+     *
+     * @var array
+     */
+    protected $contents;
 
     /**
      * Retrieve the endpoint.
@@ -74,12 +81,42 @@ abstract class AbstractRequest
     }
 
     /**
+     * Verifies whether the request has any set params.
+     *
+     * @return bool
+     */
+    public function hasParams()
+    {
+        return $this->params && count($this->params);
+    }
+
+    /**
      * Get the current parameters.
      *
-     * @return string
+     * @return array
      */
     public function getParams()
     {
         return $this->params;
+    }
+
+    /**
+     * Verifies whether the request has any set contents.
+     *
+     * @return bool
+     */
+    public function hasContents()
+    {
+        return $this->contents && count($this->contents);
+    }
+
+    /**
+     * Get the current contents.
+     *
+     * @return array
+     */
+    public function getContents()
+    {
+        return $this->contents;
     }
 }
