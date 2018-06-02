@@ -1,8 +1,8 @@
 <?php
 
-namespace MobianApi\Requests\Bookings;
+namespace Mobian\ResellerApi\Requests\Bookings;
 
-use MobianApi\Requests\AbstractRequest;
+use Mobian\ResellerApi\Requests\AbstractRequest;
 
 class Fetch extends AbstractRequest
 {

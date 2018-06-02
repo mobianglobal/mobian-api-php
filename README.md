@@ -33,7 +33,7 @@ composer update mobianglobal/reseller-api-php
 ## Example usage
 
 ```
-use MobianApi\Requests\Bookings\FetchAll as FetchBookingsRequest;
+use Mobian\ResellerApi\Requests\Bookings\FetchAll as FetchBookingsRequest;
 
 // Setup reseller authentication key
 MobianConfig::setAuthKey('RESELLER_KEY_HERE');

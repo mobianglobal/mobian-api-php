@@ -1,11 +1,11 @@
 <?php
 
-namespace MobianApi;
+namespace Mobian\ResellerApi;
 
 /**
  * Static configuration class.
  */
-class MobianConfig
+class ApiConfig
 {
     /**
      * Host where the MOBIAN API is located.

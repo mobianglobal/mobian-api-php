@@ -1,15 +1,15 @@
 <?php
 
-namespace MobianApi;
+namespace Mobian\ResellerApi;
 
 use Exception;
-use MobianApi\Adapters\Curl;
-use MobianApi\Requests\AbstractRequest;
+use Mobian\ResellerApi\Adapters\Curl;
+use Mobian\ResellerApi\Requests\AbstractRequest;
 
 /**
  * MOBIAN communication client.
  */
-class MobianClient
+class ApiClient
 {
     /**
      * Execute a request to the API.
