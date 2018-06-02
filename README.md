@@ -4,6 +4,11 @@ The MOBIAN Reseller API can be used to book various travel services. For the res
 
 This package is actively maintained with the API's versions to make switching between versions less of a pain as well.
 
+Necessities for the package;
+
+* PHP 5.6 or higher
+* cURL
+
 ## Install
 
 The recommended way to install the package is through

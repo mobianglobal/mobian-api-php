@@ -2,7 +2,7 @@
 
 namespace MobianApi\Adapters;
 
-use MobianApi\Config;
+use MobianApi\MobianConfig;
 use MobianApi\Requests\AbstractRequest;
 
 class Curl
@@ -29,7 +29,7 @@ class Curl
 
     private function buildUrlForRequest(AbstractRequest $request)
     {
-        $url = Config::getHostname() . $request->getEndpoint();
+        $url = MobianConfig::getHostname() . $request->getEndpoint();
 
         if (in_array($request->getMethod(), ['get', 'delete'])) {
             $url .= '?' . http_build_query($request->getParams());
@@ -49,7 +49,7 @@ class Curl
             CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_URL => $url,
             CURLOPT_HTTPHEADER => [
-                'X-Auth-Token: ' . Config::getAuthKey(),
+                'X-Auth-Token: ' . MobianConfig::getAuthKey(),
             ],
         ];
 
