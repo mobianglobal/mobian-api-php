@@ -3,6 +3,9 @@
 namespace Mobian\ResellerApi\Adapters;
 
 use Mobian\ResellerApi\ApiConfig;
+use Mobian\ResellerApi\Exceptions\Adapters\AdapterException;
+use Mobian\ResellerApi\Exceptions\Adapters\ClientException;
+use Mobian\ResellerApi\Exceptions\Adapters\ServerException;
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
 class Curl
@@ -27,6 +30,12 @@ class Curl
         return self::$instance;
     }
 
+    /**
+     * Builds the URL used for the request.
+     *
+     * @param AbstractRequest $request
+     * @return string
+     */
     private function buildUrlForRequest(AbstractRequest $request)
     {
         $url = ApiConfig::getHostname() . $request->getEndpoint();
@@ -38,6 +47,12 @@ class Curl
         return $url;
     }
 
+    /**
+     * Execute an API request.
+     *
+     * @param AbstractRequest $request
+     * @return string
+     */
     public function execute(AbstractRequest $request)
     {
         $url = $this->buildUrlForRequest($request);
@@ -67,8 +82,25 @@ class Curl
         }
 
         $response = curl_exec($curl);
+        $responseCode = curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
+        $error = curl_error($curl);
 
         curl_close($curl);
+
+        if ($error) {
+            // Something unexpected happened during execution
+            throw new AdapterException($error);
+        }
+
+        // Validate the response's status code
+        $level = (int) floor($responseCode / 100);
+        if ($level === 4) {
+            // There is something wrong on the input side
+            throw new ClientException($response);
+        } elseif ($level === 5) {
+            // There is something wrong on the server side
+            throw new ServerException($response);
+        }
 
         return $response;
     }
