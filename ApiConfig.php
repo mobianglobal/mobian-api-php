@@ -8,6 +8,13 @@ namespace Mobian\ResellerApi;
 class ApiConfig
 {
     /**
+     * Version number of the API package.
+     *
+     * @var string
+     */
+    const VERSION = '0.0.1';
+
+    /**
      * Host where the MOBIAN API is located.
      *
      * @var string
