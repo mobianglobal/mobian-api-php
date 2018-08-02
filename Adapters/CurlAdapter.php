@@ -8,18 +8,20 @@ use Mobian\ResellerApi\Exceptions\Adapters\ClientException;
 use Mobian\ResellerApi\Exceptions\Adapters\ServerException;
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Curl
+/**
+ * @todo Implement multi cURL method for optimized performance.
+ */
+class CurlAdapter
 {
     /**
-     * @var Curl
+     * @var CurlAdapter
      */
     private static $instance;
 
     /**
      * Get the MOBIAN API instance.
      *
-     * @todo Implement multi cURL method for optimized performance.
-     * @return Curl
+     * @return CurlAdapter
      */
     public static function getInstance()
     {

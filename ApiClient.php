@@ -2,8 +2,8 @@
 
 namespace Mobian\ResellerApi;
 
-use Exception;
-use Mobian\ResellerApi\Adapters\Curl;
+use Mobian\ResellerApi\Adapters\CurlAdapter;
+use Mobian\ResellerApi\Exceptions\Adapters\FormatException;
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
 /**
@@ -19,12 +19,12 @@ class ApiClient
      */
     public static function request(AbstractRequest $request)
     {
-        $response = Curl::getInstance()->execute($request);
+        $response = CurlAdapter::getInstance()->execute($request);
 
         $result = json_decode($response, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new Exception('Looks like our servers are talking jibber-jabber');
+            throw new FormatException('Looks like our servers are talking jibber-jabber');
         }
 
         return $result;
