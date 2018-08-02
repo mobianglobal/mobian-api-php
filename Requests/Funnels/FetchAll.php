@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Products;
+namespace Mobian\ResellerApi\Requests\Funnels;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
@@ -14,7 +14,7 @@ class FetchAll extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/v1/resource2/product_listing.travel/data';
+    protected $endpoint = '/funnels';
 
     /**
      * Contructor.

@@ -14,7 +14,7 @@ class Create extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/v1/resource2/order.travel/data';
+    protected $endpoint = '/bookings';
 
     /**
      * Contructor.

@@ -1,20 +1,20 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Products;
+namespace Mobian\ResellerApi\Requests\Bookings;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Fetch extends AbstractRequest
+class Update extends AbstractRequest
 {
     /**
      * @inheritdoc
      */
-    protected $method = self::METHOD_GET;
+    protected $method = self::METHOD_PUT;
 
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/v1/resource2/product_listing.travel/data/%s';
+    protected $endpoint = '/bookings/%s';
 
     /**
      * Contructor.

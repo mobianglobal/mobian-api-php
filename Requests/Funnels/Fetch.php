@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Bookings;
+namespace Mobian\ResellerApi\Requests\Funnels;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
@@ -14,7 +14,7 @@ class Fetch extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/bookings/%s';
+    protected $endpoint = '/funnels/%s';
 
     /**
      * Contructor.
