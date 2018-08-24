@@ -14,7 +14,7 @@ class Parking extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/v1/resource2/product.travel/data';
+    protected $endpoint = '/catalogue/parking';
 
     /**
      * Contructor.

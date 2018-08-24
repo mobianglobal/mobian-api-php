@@ -14,5 +14,5 @@ class FetchAll extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/v1/resource2/options.travel/data';
+    protected $endpoint = '/options';
 }

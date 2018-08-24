@@ -12,14 +12,14 @@ class ApiConfig
      *
      * @var string
      */
-    const VERSION = '0.0.1';
+    const VERSION = '0.1.0';
 
     /**
      * Host where the MOBIAN API is located.
      *
      * @var string
      */
-    private static $hostname = 'https://api.mobian.global';
+    private static $hostname = 'https://api-v3.mobian.global';
 
     /**
      * Authentication key.

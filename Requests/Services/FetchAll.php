@@ -14,7 +14,7 @@ class FetchAll extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/v1/resource2/services.travel/data';
+    protected $endpoint = '/services';
 
     /**
      * Contructor.
