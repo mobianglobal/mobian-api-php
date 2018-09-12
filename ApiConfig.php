@@ -33,7 +33,7 @@ class ApiConfig
      *
      * @param string $hostname
      */
-    public static function setHostname(string $hostname)
+    public static function setHostname($hostname)
     {
         self::$hostname = $hostname;
     }
@@ -53,7 +53,7 @@ class ApiConfig
      *
      * @param string $authKey
      */
-    public static function setAuthKey(string $authKey)
+    public static function setAuthKey($authKey)
     {
         self::$authKey = $authKey;
     }
