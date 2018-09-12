@@ -19,7 +19,7 @@ class ApiConfig
      *
      * @var string
      */
-    private static $hostname = 'https://api-v3.mobian.global';
+    private static $hostname = 'https://api-v3.mobian.global/api';
 
     /**
      * Authentication key.
