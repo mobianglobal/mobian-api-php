@@ -29,6 +29,13 @@ class ApiConfig
     private static $authKey;
 
     /**
+     * Requested language.
+     *
+     * @var string
+     */
+    private static $language = 'en';
+
+    /**
      * Set the hostname for future requests.
      *
      * @param string $hostname
@@ -66,5 +73,25 @@ class ApiConfig
     public static function getAuthKey()
     {
         return self::$authKey;
+    }
+
+    /**
+     * Set the language for any applicable translations.
+     *
+     * @param string $language
+     */
+    public static function setLanguage($language)
+    {
+        self::$language = $language;
+    }
+
+    /**
+     * Get the current requested language.
+     *
+     * @return string
+     */
+    public static function getLanguage()
+    {
+        return self::$language;
     }
 }
