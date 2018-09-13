@@ -66,6 +66,7 @@ class CurlAdapter
             CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_URL => $url,
             CURLOPT_HTTPHEADER => [
+                'Accept-Language: ' . ApiConfig::getLanguage(),
                 'Content-Type: application/json',
                 'X-Auth-Token: ' . ApiConfig::getAuthKey(),
             ],
