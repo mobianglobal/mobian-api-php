@@ -15,4 +15,15 @@ class FetchAll extends AbstractRequest
      * @inheritdoc
      */
     protected $endpoint = '/options';
+
+    /**
+     * Contructor.
+     *
+     * @param array $query
+     */
+    public function __construct(array $query = [])
+    {
+        // TODO: Implement query parsing
+        $this->params = $query;
+    }
 }

@@ -24,7 +24,7 @@ After installing, make sure you require Composer's autoloader:
 require 'vendor/autoload.php';
 ```
 
-You can then later update Guzzle using composer:
+You can then later update the package using composer:
 
  ```bash
 composer update mobianglobal/reseller-api-php
@@ -39,7 +39,7 @@ use Mobian\ResellerApi\Requests\Bookings\FetchAll as FetchBookingsRequest;
 MobianConfig::setAuthKey('RESELLER_KEY_HERE');
 
 $request = new FetchBookingsRequest([
-    'order_id' => 0123456789,
+    'order_id' => 1234567890,
 ]);
 
 $bookings = MobianClient::request($request);
