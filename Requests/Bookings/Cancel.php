@@ -17,7 +17,7 @@ class Cancel extends AbstractRequest
     protected $endpoint = '/bookings/%d/cancel';
 
     /**
-     * Contructor.
+     * Constructor.
      *
      * @param int $identifier
      */
