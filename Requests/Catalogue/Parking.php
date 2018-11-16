@@ -17,7 +17,7 @@ class Parking extends AbstractRequest
     protected $endpoint = '/catalogue/parking';
 
     /**
-     * Contructor.
+     * Constructor.
      *
      * @param array $query
      */

@@ -17,7 +17,7 @@ class Fetch extends AbstractRequest
     protected $endpoint = '/funnels/%d';
 
     /**
-     * Contructor.
+     * Constructor.
      *
      * @param int $identifier
      */

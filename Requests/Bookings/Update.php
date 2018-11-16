@@ -17,7 +17,7 @@ class Update extends AbstractRequest
     protected $endpoint = '/bookings/%d';
 
     /**
-     * Contructor.
+     * Constructor.
      *
      * @param int $identifier
      * @param array $contents

@@ -17,7 +17,7 @@ class FetchAll extends AbstractRequest
     protected $endpoint = '/services';
 
     /**
-     * Contructor.
+     * Constructor.
      *
      * @param array $query
      */
