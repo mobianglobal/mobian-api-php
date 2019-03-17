@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * `Accept` header for every request to only accept JSON responses.
 * `User-Agent` header for every request to identify package usage.
+* Categories request.
 * Transaction requests.
 * Payment requests.
 * Quotes request.
