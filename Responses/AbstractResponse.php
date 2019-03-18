@@ -24,7 +24,8 @@ abstract class AbstractResponse
      * @param string $response
      * @param int $statusCode
      */
-    public function __construct($response, $statusCode = 200) {
+    public function __construct($response, $statusCode = 200)
+    {
         $this->response = $response;
         $this->statusCode = $statusCode;
     }

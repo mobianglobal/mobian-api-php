@@ -17,7 +17,8 @@ class JsonResponse extends AbstractResponse
      * @param array $response
      * @param int $statusCode
      */
-    public function __construct(array $response, $statusCode = 200) {
+    public function __construct(array $response, $statusCode = 200)
+    {
         $this->response = $response;
         $this->statusCode = $statusCode;
     }

@@ -3,10 +3,10 @@
 namespace Mobian\ResellerApi;
 
 use Mobian\ResellerApi\Adapters\CurlAdapter;
-use Mobian\ResellerApi\Requests\AbstractRequest;
 use Mobian\ResellerApi\Exceptions\Adapters\ClientException;
 use Mobian\ResellerApi\Exceptions\Adapters\FormatException;
 use Mobian\ResellerApi\Exceptions\Adapters\ServerException;
+use Mobian\ResellerApi\Requests\AbstractRequest;
 use Mobian\ResellerApi\Responses\JsonResponse;
 
 /**
