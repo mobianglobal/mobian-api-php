@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2019-03-15
+
+**Added**
+
+* `Accept` header for every request to only accept JSON responses.
+* `User-Agent` header for every request to identify package usage.
+* Categories request.
+* Transaction requests.
+* Payment requests.
+* Quotes request.
+* Amend price request.
+* Property group request.
+* Properties request.
+* Points of interest request.
+
+**Changed**
+
+* Error response gets decoded before throwing exceptions.
+* Requests now return a `JsonResponse` object when successful.
+
+
 ## [0.4.0] - 2018-02-26
 
 **Added**

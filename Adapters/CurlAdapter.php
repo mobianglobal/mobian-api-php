@@ -4,9 +4,8 @@ namespace Mobian\ResellerApi\Adapters;
 
 use Mobian\ResellerApi\ApiConfig;
 use Mobian\ResellerApi\Exceptions\Adapters\AdapterException;
-use Mobian\ResellerApi\Exceptions\Adapters\ClientException;
-use Mobian\ResellerApi\Exceptions\Adapters\ServerException;
 use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ResellerApi\Responses\PlainTextResponse;
 
 /**
  * @todo Implement multi cURL method for optimized performance.
@@ -53,12 +52,16 @@ class CurlAdapter
      * Execute an API request.
      *
      * @param AbstractRequest $request
-     * @return string
+     * @return PlainTextResponse
+     *
+     * @throws AdapterException
      */
     public function execute(AbstractRequest $request)
     {
         $url = $this->buildUrlForRequest($request);
         $method = strtoupper($request->getMethod());
+
+        $identificationHeader = sprintf('%s: %s', ApiConfig::getAuthIdentifier(), ApiConfig::getAuthKey());
 
         $options = [
             CURLOPT_HEADER => 0,
@@ -66,9 +69,13 @@ class CurlAdapter
             CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_URL => $url,
             CURLOPT_HTTPHEADER => [
+                'Accept: application/json',
                 'Accept-Language: ' . ApiConfig::getLanguage(),
-                'Api-Key: ' . ApiConfig::getAuthKey(),
                 'Content-Type: application/json',
+                'User-Agent: mobian-reseller-package/' . ApiConfig::VERSION,
+
+                // Add identification header
+                $identificationHeader,
             ],
         ];
 
@@ -95,16 +102,6 @@ class CurlAdapter
             throw new AdapterException($error);
         }
 
-        // Validate the response's status code
-        $level = (int) floor($responseCode / 100);
-        if ($level === 4) {
-            // There is something wrong on the input side
-            throw new ClientException($response);
-        } elseif ($level === 5) {
-            // There is something wrong on the server side
-            throw new ServerException($response);
-        }
-
-        return $response;
+        return new PlainTextResponse($response, $responseCode);
     }
 }
