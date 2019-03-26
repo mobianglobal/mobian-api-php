@@ -14,7 +14,7 @@ class Create extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/transactions/%d/payments';
+    protected $endpoint = '/api/transactions/%d/payments';
 
     /**
      * Constructor.

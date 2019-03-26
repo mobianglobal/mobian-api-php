@@ -14,7 +14,7 @@ class Amend extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/bookings/%d/amend';
+    protected $endpoint = '/api/bookings/%d/amend';
 
     /**
      * Constructor.

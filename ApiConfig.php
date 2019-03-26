@@ -12,7 +12,7 @@ class ApiConfig
      *
      * @var string
      */
-    const VERSION = '0.5.0';
+    const VERSION = '0.6.0';
 
     /**
      * API authentication identifier.
@@ -26,7 +26,7 @@ class ApiConfig
      *
      * @var string
      */
-    const DEFAULT_HOST_NAME = 'https://api-v3.mobian.global/api';
+    const DEFAULT_HOST_NAME = 'https://api-v3.mobian.global';
 
     /**
      * API default language.

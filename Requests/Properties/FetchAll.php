@@ -14,7 +14,7 @@ class FetchAll extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/properties';
+    protected $endpoint = '/api/properties';
 
     /**
      * Constructor.

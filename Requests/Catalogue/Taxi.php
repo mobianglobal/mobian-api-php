@@ -14,7 +14,7 @@ class Taxi extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/catalogue/taxi';
+    protected $endpoint = '/api/catalogue/taxi';
 
     /**
      * Constructor.
