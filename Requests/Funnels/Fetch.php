@@ -14,7 +14,7 @@ class Fetch extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/funnels/%d';
+    protected $endpoint = '/api/funnels/%d';
 
     /**
      * Constructor.

@@ -44,7 +44,7 @@ abstract class AbstractRequest
      *
      * @var string
      */
-    protected $endpoint = '/hb';
+    protected $endpoint = '/check';
 
     /**
      * Query parameter collection.

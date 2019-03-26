@@ -14,7 +14,7 @@ class Fetch extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/bookings/%d/amend/price';
+    protected $endpoint = '/api/bookings/%d/amend/price';
 
     /**
      * Constructor.

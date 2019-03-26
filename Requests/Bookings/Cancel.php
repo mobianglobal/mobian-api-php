@@ -14,7 +14,7 @@ class Cancel extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/bookings/%d/cancel';
+    protected $endpoint = '/api/bookings/%d/cancel';
 
     /**
      * Constructor.

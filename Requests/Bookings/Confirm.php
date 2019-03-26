@@ -1,10 +1,10 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Bookings\Transactions;
+namespace Mobian\ResellerApi\Requests\Bookings;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Create extends AbstractRequest
+class Confirm extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -14,12 +14,12 @@ class Create extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/bookings/%d/transactions';
+    protected $endpoint = '/api/bookings/%d/confirm';
 
     /**
      * Constructor.
      *
-     * @param mixed $identifier
+     * @param int $identifier
      */
     public function __construct($identifier)
     {

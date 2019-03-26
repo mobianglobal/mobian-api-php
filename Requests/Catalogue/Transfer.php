@@ -14,7 +14,7 @@ class Transfer extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/catalogue/transfer';
+    protected $endpoint = '/api/catalogue/transfer';
 
     /**
      * Constructor.
