@@ -7,6 +7,7 @@ use Mobian\ResellerApi\Exceptions\Adapters\ClientException;
 use Mobian\ResellerApi\Exceptions\Adapters\FormatException;
 use Mobian\ResellerApi\Exceptions\Adapters\ServerException;
 use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ResellerApi\Responses\EmptyResponse;
 use Mobian\ResellerApi\Responses\JsonResponse;
 
 /**
@@ -27,6 +28,11 @@ class ApiClient
     public static function request(AbstractRequest $request)
     {
         $response = CurlAdapter::getInstance()->execute($request);
+
+        // Catch No Content responses
+        if (empty($response->getResponse())) {
+            return new EmptyResponse($response->getStatusCode());
+        }
 
         $decodedResponse = json_decode($response->getResponse(), true);
 
