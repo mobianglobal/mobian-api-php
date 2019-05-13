@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobian\ResellerApi\Exceptions\Adapters;
+namespace Mobian\ResellerApi\Exceptions;
 
 use Exception;
 
