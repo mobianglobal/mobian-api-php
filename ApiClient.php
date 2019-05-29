@@ -3,9 +3,9 @@
 namespace Mobian\ResellerApi;
 
 use Mobian\ResellerApi\Adapters\CurlAdapter;
-use Mobian\ResellerApi\Exceptions\Adapters\ClientException;
-use Mobian\ResellerApi\Exceptions\Adapters\FormatException;
-use Mobian\ResellerApi\Exceptions\Adapters\ServerException;
+use Mobian\ResellerApi\Exceptions\ClientException;
+use Mobian\ResellerApi\Exceptions\FormatException;
+use Mobian\ResellerApi\Exceptions\ServerException;
 use Mobian\ResellerApi\Requests\AbstractRequest;
 use Mobian\ResellerApi\Responses\EmptyResponse;
 use Mobian\ResellerApi\Responses\JsonResponse;
@@ -19,11 +19,12 @@ class ApiClient
      * Execute a request to the API.
      *
      * @param AbstractRequest $request
-     * @return JsonResponse
      *
      * @throws ClientException
      * @throws FormatException
      * @throws ServerException
+     *
+     * @return AbstractResponse
      */
     public static function request(AbstractRequest $request)
     {

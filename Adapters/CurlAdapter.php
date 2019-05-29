@@ -35,6 +35,7 @@ class CurlAdapter
      * Builds the URL used for the request.
      *
      * @param AbstractRequest $request
+     *
      * @return string
      */
     private function buildUrlForRequest(AbstractRequest $request)
@@ -52,9 +53,10 @@ class CurlAdapter
      * Execute an API request.
      *
      * @param AbstractRequest $request
-     * @return PlainTextResponse
      *
      * @throws AdapterException
+     *
+     * @return PlainTextResponse
      */
     public function execute(AbstractRequest $request)
     {
