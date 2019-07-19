@@ -4,8 +4,9 @@ namespace Mobian\ResellerApi\Adapters;
 
 use Mobian\ResellerApi\ApiConfig;
 use Mobian\ResellerApi\Exceptions\Adapters\AdapterException;
+use Mobian\ResellerApi\Factories\ResponseFactory;
 use Mobian\ResellerApi\Requests\AbstractRequest;
-use Mobian\ResellerApi\Responses\PlainTextResponse;
+use Mobian\ResellerApi\Responses\AbstractResponse;
 
 /**
  * @todo Implement multi cURL method for optimized performance.
@@ -56,17 +57,17 @@ class CurlAdapter
      *
      * @throws AdapterException
      *
-     * @return PlainTextResponse
+     * @return AbstractResponse
      */
     public function execute(AbstractRequest $request)
     {
         $url = $this->buildUrlForRequest($request);
-        $method = strtoupper($request->getMethod());
+        $method = mb_strtoupper($request->getMethod());
 
         $identificationHeader = sprintf('%s: %s', ApiConfig::getAuthIdentifier(), ApiConfig::getAuthKey());
 
         $options = [
-            CURLOPT_HEADER => 0,
+            CURLOPT_HEADER => 1,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_URL => $url,
@@ -94,7 +95,15 @@ class CurlAdapter
         }
 
         $response = curl_exec($curl);
+
+        $headerSize = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
+
         $responseCode = curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
+        $responseHeader = mb_substr($response, 0, $headerSize);
+        $responseContentType = self::parseContentType($responseHeader);
+
+        $response = mb_substr($response, $headerSize);
+
         $error = curl_error($curl);
 
         curl_close($curl);
@@ -104,6 +113,24 @@ class CurlAdapter
             throw new AdapterException($error);
         }
 
-        return new PlainTextResponse($response, $responseCode);
+        return ResponseFactory::make($response, $responseContentType, $responseCode);
+    }
+
+    /**
+     * Parses the value of the content type header.
+     *
+     * @param string $responseHeader
+     *
+     * @return string|null
+     */
+    private static function parseContentType($responseHeader)
+    {
+        $headers = explode(PHP_EOL, $responseHeader);
+
+        foreach ($headers as $header) {
+            if (mb_strpos($header, 'content-type') === 0) {
+                return trim(explode(':', $header)[1]);
+            }
+        }
     }
 }
