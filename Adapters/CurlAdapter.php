@@ -128,8 +128,8 @@ class CurlAdapter
         $headers = explode(PHP_EOL, $responseHeader);
 
         foreach ($headers as $header) {
-            if (mb_strpos($header, 'content-type') === 0) {
-                return trim(explode(':', $header)[1]);
+            if (mb_stripos($header, 'Content-Type') === 0) {
+                return mb_strtolower(trim(explode(':', $header)[1]));
             }
         }
     }
