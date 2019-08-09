@@ -18,6 +18,6 @@ class JsonResponse extends AbstractResponse
      */
     public function getResponse()
     {
-        return parent::getResponse();
+        return $this->response;
     }
 }
