@@ -4,10 +4,8 @@ namespace Mobian\ResellerApi;
 
 use Mobian\ResellerApi\Adapters\CurlAdapter;
 use Mobian\ResellerApi\Exceptions\ClientException;
-use Mobian\ResellerApi\Exceptions\FormatException;
 use Mobian\ResellerApi\Exceptions\ServerException;
 use Mobian\ResellerApi\Requests\AbstractRequest;
-use Mobian\ResellerApi\Responses\EmptyResponse;
 use Mobian\ResellerApi\Responses\JsonResponse;
 
 /**
@@ -21,7 +19,6 @@ class ApiClient
      * @param AbstractRequest $request
      *
      * @throws ClientException
-     * @throws FormatException
      * @throws ServerException
      *
      * @return AbstractResponse
@@ -30,26 +27,27 @@ class ApiClient
     {
         $response = CurlAdapter::getInstance()->execute($request);
 
-        // Catch No Content responses
-        if (empty($response->getResponse())) {
-            return new EmptyResponse($response->getStatusCode());
-        }
-
-        $decodedResponse = json_decode($response->getResponse(), true);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new FormatException('Looks like our servers are talking jibber-jabber');
-        }
-
-        // Validate the response's status code
+        // Throw client exceptions
         if ($response->isClientError()) {
-            // There is something wrong on the input side
-            throw new ClientException($decodedResponse['message'], $decodedResponse['code']);
-        } elseif ($response->isServerError()) {
-            // There is something wrong on the server side
-            throw new ServerException($decodedResponse['message'], $decodedResponse['code']);
+            $message = $response->getResponse();
+
+            if ($response instanceof JsonResponse) {
+                $message = $response->getResponse()['message'];
+            }
+
+            throw new ClientException($message, $response->getStatusCode());
         }
 
-        return new JsonResponse($decodedResponse, $response->getStatusCode());
+        if ($response->isServerError()) {
+            $message = $response->getResponse();
+
+            if ($response instanceof JsonResponse) {
+                $message = $response->getResponse()['message'];
+            }
+
+            throw new ServerException($message, $response->getStatusCode());
+        }
+
+        return $response;
     }
 }

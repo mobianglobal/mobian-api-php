@@ -12,14 +12,12 @@ class JsonResponse extends AbstractResponse
     protected $response;
 
     /**
-     * Constructor.
+     * @inheritdoc
      *
-     * @param array $response
-     * @param int $statusCode
+     * @return array
      */
-    public function __construct(array $response, $statusCode = 200)
+    public function getResponse()
     {
-        $this->response = $response;
-        $this->statusCode = $statusCode;
+        return parent::getResponse();
     }
 }

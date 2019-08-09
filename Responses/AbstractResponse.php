@@ -5,14 +5,21 @@ namespace Mobian\ResellerApi\Responses;
 abstract class AbstractResponse
 {
     /**
-     * Response of a request.
+     * Content type of the response.
+     *
+     * @var string
+     */
+    protected $contentType;
+
+    /**
+     * The response.
      *
      * @var string
      */
     protected $response;
 
     /**
-     * HTTP status code for the response.
+     * HTTP status code of the response.
      *
      * @var int
      */
@@ -22,12 +29,24 @@ abstract class AbstractResponse
      * Constructor.
      *
      * @param string $response
+     * @param string $contentType
      * @param int $statusCode
      */
-    public function __construct($response, $statusCode = 200)
+    public function __construct($response, $contentType, $statusCode = 200)
     {
+        $this->contentType = $contentType;
         $this->response = $response;
         $this->statusCode = $statusCode;
+    }
+
+    /**
+     * Get the content type.
+     *
+     * @return string
+     */
+    public function getContentType()
+    {
+        return $this->contentType;
     }
 
     /**

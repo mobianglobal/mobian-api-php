@@ -5,11 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.8.1] - 2019-07-19
+
+**Changed**
+
+* `Content-Type` header parsing is now done case insensitive.
+
+
+## [0.8.0] - 2019-07-19
+
+**Added**
+
+* `Bookings\Voucher` request to fetch the voucher of a booking.
+* Content-Type response header to the response classes.
+
+**Changed**
+
+* `CurlAdapter` immediately resolves the response to the correct response class.
+
+
 ## [0.7.2] - 2019-07-06
 
 **Added**
 
-* `/catalogue` request to retrieve products.
+* `Catalogue\Product` request to retrieve catalogue products.
 
 
 ## [0.7.1] - 2019-05-13
