@@ -12,7 +12,7 @@ class ApiConfig
      *
      * @var string
      */
-    const VERSION = '0.7.2';
+    const VERSION = '0.9.1';
 
     /**
      * API authentication identifier.
@@ -34,6 +34,13 @@ class ApiConfig
      * @var string
      */
     const DEFAULT_LANGUAGE = 'en';
+
+    /**
+     * Requested currency.
+     *
+     * @var string
+     */
+    private static $currency;
 
     /**
      * Host where the MOBIAN API is located.
@@ -62,6 +69,26 @@ class ApiConfig
      * @var string
      */
     private static $language = self::DEFAULT_LANGUAGE;
+
+    /**
+     * Set the currency for future requests.
+     *
+     * @param string $currency
+     */
+    public static function setCurrency($currency)
+    {
+        self::$currency = $currency;
+    }
+
+    /**
+     * Get the current currency.
+     *
+     * @return string
+     */
+    public static function getCurrency()
+    {
+        return self::$currency;
+    }
 
     /**
      * Set the hostname for future requests.
@@ -151,6 +178,7 @@ class ApiConfig
         self::$authKey = null;
 
         self::$authIdentifier = self::DEFAULT_AUTH_IDENTIFIER;
+        self::$currency = null;
         self::$hostname = self::DEFAULT_HOST_NAME;
         self::$language = self::DEFAULT_LANGUAGE;
     }

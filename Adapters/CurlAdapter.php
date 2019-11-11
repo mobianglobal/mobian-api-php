@@ -82,6 +82,13 @@ class CurlAdapter
             ],
         ];
 
+        // Add Accept-Currency header if given.
+        if ($currency = ApiConfig::getCurrency()) {
+            $options[CURLOPT_HTTPHEADER] = array_merge($options[CURLOPT_HTTPHEADER], [
+                sprintf('Accept-Currency: %s', $currency),
+            ]);
+        }
+
         if ($request->hasContents()) {
             $options += [
                 CURLOPT_POSTFIELDS => json_encode($request->getContents()),
