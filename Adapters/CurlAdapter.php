@@ -3,7 +3,6 @@
 namespace Mobian\ResellerApi\Adapters;
 
 use Mobian\ResellerApi\ApiConfig;
-use Mobian\ResellerApi\Exceptions\Adapters\AdapterException;
 use Mobian\ResellerApi\Factories\ResponseFactory;
 use Mobian\ResellerApi\Requests\AbstractRequest;
 use Mobian\ResellerApi\Responses\AbstractResponse;
@@ -33,8 +32,6 @@ class CurlAdapter
      * Execute API requests.
      *
      * @param AbstractRequest[] $requests
-     *
-     * @throws AdapterException
      *
      * @return AbstractResponse[]
      */
