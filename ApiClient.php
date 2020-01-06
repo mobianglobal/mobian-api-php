@@ -25,7 +25,9 @@ class ApiClient
      */
     public static function request(AbstractRequest $request)
     {
-        $response = CurlAdapter::getInstance()->execute($request);
+        $responses = self::multi([$request]);
+
+        $response = array_shift($responses);
 
         // Throw client exceptions
         if ($response->isClientError()) {
@@ -49,5 +51,10 @@ class ApiClient
         }
 
         return $response;
+    }
+
+    public static function multi(array $requests)
+    {
+        return CurlAdapter::getInstance()->execute($requests);
     }
 }
