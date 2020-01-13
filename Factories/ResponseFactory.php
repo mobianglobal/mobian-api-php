@@ -5,6 +5,7 @@ namespace Mobian\ResellerApi\Factories;
 use Mobian\ResellerApi\Exceptions\FormatException;
 use Mobian\ResellerApi\Responses\AbstractResponse;
 use Mobian\ResellerApi\Responses\EmptyResponse;
+use Mobian\ResellerApi\Responses\FailedResponse;
 use Mobian\ResellerApi\Responses\JsonResponse;
 use Mobian\ResellerApi\Responses\PlainTextResponse;
 
@@ -38,5 +39,17 @@ class ResponseFactory
         }
 
         return new PlainTextResponse($response, $contentType, $code);
+    }
+
+    /**
+     * Creates a FailedResponse object.
+     *
+     * @param string $message
+     *
+     * @return FailedResponse
+     */
+    public static function makeFailed($message)
+    {
+        return new FailedResponse($message);
     }
 }

@@ -3,14 +3,10 @@
 namespace Mobian\ResellerApi\Adapters;
 
 use Mobian\ResellerApi\ApiConfig;
-use Mobian\ResellerApi\Exceptions\Adapters\AdapterException;
 use Mobian\ResellerApi\Factories\ResponseFactory;
 use Mobian\ResellerApi\Requests\AbstractRequest;
 use Mobian\ResellerApi\Responses\AbstractResponse;
 
-/**
- * @todo Implement multi cURL method for optimized performance.
- */
 class CurlAdapter
 {
     /**
@@ -33,6 +29,43 @@ class CurlAdapter
     }
 
     /**
+     * Execute API requests.
+     *
+     * @param AbstractRequest[] $requests
+     *
+     * @return AbstractResponse[]
+     */
+    public function execute($requests)
+    {
+        $curlRequests = [];
+        foreach ($requests as $request) {
+            $curlRequests[] = $this->createRequestHandle($request);
+        }
+
+        $multiHandle = curl_multi_init();
+        foreach ($curlRequests as $curlHandle) {
+            curl_multi_add_handle($multiHandle, $curlHandle);
+        }
+
+        $running = null;
+        do {
+            curl_multi_exec($multiHandle, $running);
+        } while ($running);
+
+        $curlResponses = [];
+        foreach ($curlRequests as $handle) {
+            $curlResponses[] = $this->createResponseForHandle($handle);
+
+            curl_multi_remove_handle($multiHandle, $handle);
+            curl_close($handle);
+        }
+
+        curl_multi_close($multiHandle);
+
+        return $curlResponses;
+    }
+
+    /**
      * Builds the URL used for the request.
      *
      * @param AbstractRequest $request
@@ -51,15 +84,13 @@ class CurlAdapter
     }
 
     /**
-     * Execute an API request.
+     * Creates a single cURL handle to execute.
      *
      * @param AbstractRequest $request
      *
-     * @throws AdapterException
-     *
-     * @return AbstractResponse
+     * @return resource
      */
-    public function execute(AbstractRequest $request)
+    private function createRequestHandle(AbstractRequest $request)
     {
         $url = $this->buildUrlForRequest($request);
         $method = mb_strtoupper($request->getMethod());
@@ -95,28 +126,33 @@ class CurlAdapter
 
         $curl = curl_init();
 
-        foreach ($options as $option => $value) {
-            curl_setopt($curl, $option, $value);
-        }
+        curl_setopt_array($curl, $options);
 
-        $response = curl_exec($curl);
+        return $curl;
+    }
 
-        $headerSize = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
-
-        $responseCode = curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
-        $responseHeader = mb_substr($response, 0, $headerSize);
-        $responseContentType = self::parseContentType($responseHeader);
-
-        $response = mb_substr($response, $headerSize);
-
-        $error = curl_error($curl);
-
-        curl_close($curl);
+    /**
+     * Create.
+     *
+     * @param resource $handle
+     */
+    private function createResponseForHandle($handle)
+    {
+        $error = curl_error($handle);
 
         if ($error) {
-            // Something unexpected happened during execution
-            throw new AdapterException($error);
+            return ResponseFactory::makeFailed($error);
         }
+
+        $response = curl_multi_getcontent($handle);
+
+        $headerSize = curl_getinfo($handle, CURLINFO_HEADER_SIZE);
+
+        $responseCode = curl_getinfo($handle, CURLINFO_RESPONSE_CODE);
+        $responseHeader = mb_substr($response, 0, $headerSize);
+        $responseContentType = $this->parseContentType($responseHeader);
+
+        $response = mb_substr($response, $headerSize);
 
         return ResponseFactory::make($response, $responseContentType, $responseCode);
     }
@@ -128,7 +164,7 @@ class CurlAdapter
      *
      * @return string|null
      */
-    private static function parseContentType($responseHeader)
+    private function parseContentType($responseHeader)
     {
         $headers = explode(PHP_EOL, $responseHeader);
 

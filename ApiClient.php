@@ -6,6 +6,7 @@ use Mobian\ResellerApi\Adapters\CurlAdapter;
 use Mobian\ResellerApi\Exceptions\ClientException;
 use Mobian\ResellerApi\Exceptions\ServerException;
 use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ResellerApi\Responses\AbstractResponse;
 use Mobian\ResellerApi\Responses\JsonResponse;
 
 /**
@@ -25,7 +26,9 @@ class ApiClient
      */
     public static function request(AbstractRequest $request)
     {
-        $response = CurlAdapter::getInstance()->execute($request);
+        $responses = self::multi([$request]);
+
+        $response = array_shift($responses);
 
         // Throw client exceptions
         if ($response->isClientError()) {
@@ -49,5 +52,21 @@ class ApiClient
         }
 
         return $response;
+    }
+
+    /**
+     * Execute multiple requests at the same time to the API.
+     *
+     * @param AbstractRequest[] $requests
+     *
+     * @return AbstractResponse[] $request
+     */
+    public static function multi(array $requests)
+    {
+        if (empty($requests)) {
+            return [];
+        }
+
+        return CurlAdapter::getInstance()->execute($requests);
     }
 }

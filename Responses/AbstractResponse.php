@@ -80,6 +80,26 @@ abstract class AbstractResponse
     }
 
     /**
+     * Checks whether the response is successful.
+     *
+     * @return bool
+     */
+    public function isSuccessful()
+    {
+        return !$this->isErroneous();
+    }
+
+    /**
+     * Check whether the response is an error.
+     *
+     * @return bool
+     */
+    public function isErroneous()
+    {
+        return $this->isClientError() || $this->isServerError();
+    }
+
+    /**
      * Check whether the status code insinuates a client error.
      *
      * @return bool
