@@ -63,6 +63,10 @@ class ApiClient
      */
     public static function multi(array $requests)
     {
+        if (empty($requests)) {
+            return [];
+        }
+
         return CurlAdapter::getInstance()->execute($requests);
     }
 }
