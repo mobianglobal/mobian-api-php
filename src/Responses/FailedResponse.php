@@ -9,7 +9,7 @@ class FailedResponse extends AbstractResponse
      *
      * @param string $response
      */
-    public function __construct($response)
+    public function __construct(string $response)
     {
         parent::__construct($response, 'text/plain', 0);
     }

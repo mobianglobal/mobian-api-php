@@ -1,10 +1,10 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Transactions\Quotes;
+namespace Mobian\ResellerApi\Requests\Bookings;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Fetch extends AbstractRequest
+class GetBookingRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -14,14 +14,14 @@ class Fetch extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/transactions/%d/quotes';
+    protected $endpoint = '/api/bookings/%d';
 
     /**
      * Constructor.
      *
      * @param int $identifier
      */
-    public function __construct($identifier)
+    public function __construct(int $identifier)
     {
         $this->endpoint = sprintf($this->endpoint, $identifier);
     }

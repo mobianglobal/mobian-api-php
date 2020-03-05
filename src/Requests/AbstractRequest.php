@@ -9,28 +9,28 @@ abstract class AbstractRequest
      *
      * @var string
      */
-    const METHOD_DELETE = 'delete';
+    public const METHOD_DELETE = 'delete';
 
     /**
      * Read method HTTP verb.
      *
      * @var string
      */
-    const METHOD_GET = 'get';
+    public const METHOD_GET = 'get';
 
     /**
      * Create method HTTP verb.
      *
      * @var string
      */
-    const METHOD_POST = 'post';
+    public const METHOD_POST = 'post';
 
     /**
      * Update method HTTP verb.
      *
      * @var string
      */
-    const METHOD_PUT = 'put';
+    public const METHOD_PUT = 'put';
 
     /**
      * Update method HTTP verb.

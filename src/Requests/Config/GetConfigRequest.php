@@ -4,7 +4,7 @@ namespace Mobian\ResellerApi\Requests\Config;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Fetch extends AbstractRequest
+class GetConfigRequest extends AbstractRequest
 {
     /**
      * @inheritdoc

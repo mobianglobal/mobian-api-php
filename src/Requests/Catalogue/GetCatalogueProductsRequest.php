@@ -1,10 +1,10 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Options;
+namespace Mobian\ResellerApi\Requests\Catalogue;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class FetchAll extends AbstractRequest
+class GetCatalogueProductsRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -14,7 +14,7 @@ class FetchAll extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/options';
+    protected $endpoint = '/api/catalogue';
 
     /**
      * Constructor.

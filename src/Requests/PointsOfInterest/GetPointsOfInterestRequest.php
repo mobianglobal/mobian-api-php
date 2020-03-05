@@ -1,10 +1,10 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Services;
+namespace Mobian\ResellerApi\Requests\PointsOfInterest;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class FetchAll extends AbstractRequest
+class GetPointsOfInterestRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -14,7 +14,7 @@ class FetchAll extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/services';
+    protected $endpoint = '/api/points-of-interest';
 
     /**
      * Constructor.

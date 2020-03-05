@@ -4,7 +4,7 @@ namespace Mobian\ResellerApi\Requests\Catalogue;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Parking extends AbstractRequest
+class GetTransferAvailabilityRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -14,7 +14,7 @@ class Parking extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/catalogue/parking';
+    protected $endpoint = '/api/catalogue/transfer';
 
     /**
      * Constructor.

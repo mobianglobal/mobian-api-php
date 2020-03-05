@@ -2,8 +2,6 @@
 
 namespace Mobian\ResellerApi\Exceptions;
 
-use Exception;
-
-class ClientException extends Exception
+class ClientException extends MobianApiException
 {
 }

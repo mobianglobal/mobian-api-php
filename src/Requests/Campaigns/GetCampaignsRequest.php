@@ -1,10 +1,10 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Catalogue;
+namespace Mobian\ResellerApi\Requests\Funnels;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Product extends AbstractRequest
+class GetCampaignsRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -14,7 +14,7 @@ class Product extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/catalogue';
+    protected $endpoint = '/api/funnels';
 
     /**
      * Constructor.

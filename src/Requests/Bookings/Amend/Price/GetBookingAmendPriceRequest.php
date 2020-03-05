@@ -1,10 +1,10 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Bookings;
+namespace Mobian\ResellerApi\Requests\Bookings\Amend\Price;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Voucher extends AbstractRequest
+class GetBookingAmendPriceRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -14,15 +14,18 @@ class Voucher extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/bookings/%d/voucher';
+    protected $endpoint = '/api/bookings/%d/amend/price';
 
     /**
      * Constructor.
      *
      * @param int $identifier
+     * @param array $query
      */
-    public function __construct($identifier)
+    public function __construct(int $identifier, array $query = [])
     {
         $this->endpoint = sprintf($this->endpoint, $identifier);
+
+        $this->params = $query;
     }
 }

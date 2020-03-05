@@ -1,10 +1,10 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Catalogue;
+namespace Mobian\ResellerApi\Requests\PropertyGroups;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Taxi extends AbstractRequest
+class GetPropertyGroupsRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -14,7 +14,7 @@ class Taxi extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/catalogue/taxi';
+    protected $endpoint = '/api/property-groups';
 
     /**
      * Constructor.

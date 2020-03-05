@@ -12,7 +12,7 @@
          verbose="true"
 >
     <testsuites>
-        <testsuite name="PHP Simple JWT Suite">
+        <testsuite name="MOBIAN PHP Clients Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>

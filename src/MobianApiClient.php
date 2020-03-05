@@ -9,10 +9,7 @@ use Mobian\ResellerApi\Requests\AbstractRequest;
 use Mobian\ResellerApi\Responses\AbstractResponse;
 use Mobian\ResellerApi\Responses\JsonResponse;
 
-/**
- * MOBIAN communication client.
- */
-class ApiClient
+class MobianApiClient
 {
     /**
      * Execute a request to the API.
@@ -26,9 +23,7 @@ class ApiClient
      */
     public static function request(AbstractRequest $request)
     {
-        $responses = self::multi([$request]);
-
-        $response = array_shift($responses);
+        $response = array_shift(self::multi([$request]));
 
         // Throw client exceptions
         if ($response->isClientError()) {

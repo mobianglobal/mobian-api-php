@@ -4,7 +4,7 @@ namespace Mobian\ResellerApi\Requests\Bookings;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Confirm extends AbstractRequest
+class CreateBookingRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -14,15 +14,16 @@ class Confirm extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/bookings/%d/confirm';
+    protected $endpoint = '/api/bookings';
 
     /**
      * Constructor.
      *
-     * @param int $identifier
+     * @param array $contents
      */
-    public function __construct($identifier)
+    public function __construct(array $contents)
     {
-        $this->endpoint = sprintf($this->endpoint, $identifier);
+        // TODO: Implement content validation
+        $this->contents = $contents;
     }
 }

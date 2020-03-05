@@ -1,10 +1,10 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\PropertyGroups;
+namespace Mobian\ResellerApi\Requests\Bookings;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class FetchAll extends AbstractRequest
+class GetBookingsRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -14,7 +14,7 @@ class FetchAll extends AbstractRequest
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/property-groups';
+    protected $endpoint = '/api/bookings';
 
     /**
      * Constructor.

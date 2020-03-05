@@ -4,7 +4,7 @@ namespace Mobian\ResellerApi\Requests\Bookings\Transactions;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Create extends AbstractRequest
+class CreateBookingTransactionRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
@@ -19,9 +19,9 @@ class Create extends AbstractRequest
     /**
      * Constructor.
      *
-     * @param mixed $identifier
+     * @param int $identifier
      */
-    public function __construct($identifier)
+    public function __construct(int $identifier)
     {
         $this->endpoint = sprintf($this->endpoint, $identifier);
     }

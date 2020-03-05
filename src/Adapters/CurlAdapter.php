@@ -2,8 +2,8 @@
 
 namespace Mobian\ResellerApi\Adapters;
 
-use Mobian\ResellerApi\ApiConfig;
 use Mobian\ResellerApi\Factories\ResponseFactory;
+use Mobian\ResellerApi\MobianApiConfig;
 use Mobian\ResellerApi\Requests\AbstractRequest;
 use Mobian\ResellerApi\Responses\AbstractResponse;
 
@@ -35,7 +35,7 @@ class CurlAdapter
      *
      * @return AbstractResponse[]
      */
-    public function execute($requests)
+    public function execute(array $requests)
     {
         $curlRequests = [];
         foreach ($requests as $request) {
@@ -74,7 +74,7 @@ class CurlAdapter
      */
     private function buildUrlForRequest(AbstractRequest $request)
     {
-        $url = ApiConfig::getHostname() . $request->getEndpoint();
+        $url = MobianApiConfig::getHostname() . $request->getEndpoint();
 
         if ($request->hasParams()) {
             $url .= '?' . http_build_query($request->getParams());
@@ -95,7 +95,7 @@ class CurlAdapter
         $url = $this->buildUrlForRequest($request);
         $method = mb_strtoupper($request->getMethod());
 
-        $identificationHeader = sprintf('%s: %s', ApiConfig::getAuthIdentifier(), ApiConfig::getAuthKey());
+        $identificationHeader = sprintf('%s: %s', MobianApiConfig::getAuthIdentifier(), MobianApiConfig::getAuthKey());
 
         $options = [
             CURLOPT_HEADER => 1,
@@ -104,9 +104,9 @@ class CurlAdapter
             CURLOPT_URL => $url,
             CURLOPT_HTTPHEADER => [
                 'Accept: application/json',
-                'Accept-Language: ' . ApiConfig::getLanguage(),
+                'Accept-Language: ' . MobianApiConfig::getLanguage(),
                 'Content-Type: application/json',
-                'User-Agent: mobian-reseller-package/' . ApiConfig::VERSION,
+                'User-Agent: mobian-reseller-package/' . MobianApiConfig::VERSION,
 
                 // Add identification header
                 $identificationHeader,
@@ -114,7 +114,7 @@ class CurlAdapter
         ];
 
         // Add Accept-Currency header if given.
-        if ($currency = ApiConfig::getCurrency()) {
+        if ($currency = MobianApiConfig::getCurrency()) {
             $options[CURLOPT_HTTPHEADER][] = sprintf('Accept-Currency: %s', $currency);
         }
 
@@ -164,7 +164,7 @@ class CurlAdapter
      *
      * @return string|null
      */
-    private function parseContentType($responseHeader)
+    private function parseContentType(string $responseHeader)
     {
         $headers = explode(PHP_EOL, $responseHeader);
 

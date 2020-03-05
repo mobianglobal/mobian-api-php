@@ -9,7 +9,7 @@ class EmptyResponse extends AbstractResponse
      *
      * @param int $statusCode
      */
-    public function __construct($statusCode = 204)
+    public function __construct(int $statusCode = 204)
     {
         $this->statusCode = $statusCode;
     }

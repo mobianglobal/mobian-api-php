@@ -1,28 +1,28 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Transactions\Payments;
+namespace Mobian\ResellerApi\Requests\Bookings;
 
 use Mobian\ResellerApi\Requests\AbstractRequest;
 
-class Create extends AbstractRequest
+class UpdateBookingRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
      */
-    protected $method = self::METHOD_POST;
+    protected $method = self::METHOD_PUT;
 
     /**
      * @inheritdoc
      */
-    protected $endpoint = '/api/transactions/%d/payments';
+    protected $endpoint = '/api/bookings/%d';
 
     /**
      * Constructor.
      *
-     * @param mixed $identifier
+     * @param int $identifier
      * @param array $contents
      */
-    public function __construct($identifier, array $contents)
+    public function __construct(int $identifier, array $contents)
     {
         $this->endpoint = sprintf($this->endpoint, $identifier);
 
