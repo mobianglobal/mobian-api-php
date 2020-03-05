@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Categories;
+namespace Mobian\ApiClient\Requests\Categories;
 
-use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ApiClient\Requests\AbstractRequest;
 
 class GetCategoriesRequest extends AbstractRequest
 {

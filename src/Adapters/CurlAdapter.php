@@ -1,11 +1,11 @@
 <?php
 
-namespace Mobian\ResellerApi\Adapters;
+namespace Mobian\ApiClient\Adapters;
 
-use Mobian\ResellerApi\Factories\ResponseFactory;
-use Mobian\ResellerApi\MobianApiConfig;
-use Mobian\ResellerApi\Requests\AbstractRequest;
-use Mobian\ResellerApi\Responses\AbstractResponse;
+use Mobian\ApiClient\Factories\ResponseFactory;
+use Mobian\ApiClient\MobianApiConfig;
+use Mobian\ApiClient\Requests\AbstractRequest;
+use Mobian\ApiClient\Responses\AbstractResponse;
 
 class CurlAdapter
 {

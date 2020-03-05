@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Catalogue;
+namespace Mobian\ApiClient\Requests\Catalogue;
 
-use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ApiClient\Requests\AbstractRequest;
 
 class GetParkingAvailabilityRequest extends AbstractRequest
 {

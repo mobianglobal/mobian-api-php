@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobian\ResellerApi;
+namespace Mobian\ApiClient;
 
 class MobianApiConfig
 {
@@ -9,7 +9,7 @@ class MobianApiConfig
      *
      * @var string
      */
-    public const VERSION = '0.9.1';
+    public const VERSION = '0.10.0';
 
     /**
      * API authentication identifier.

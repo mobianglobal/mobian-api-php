@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\PointsOfInterest;
+namespace Mobian\ApiClient\Requests\PointsOfInterest;
 
-use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ApiClient\Requests\AbstractRequest;
 
 class GetPointsOfInterestRequest extends AbstractRequest
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests;
+namespace Mobian\ApiClient\Requests;
 
 abstract class AbstractRequest
 {

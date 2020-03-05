@@ -1,13 +1,13 @@
 <?php
 
-namespace Mobian\ResellerApi\Factories;
+namespace Mobian\ApiClient\Factories;
 
-use Mobian\ResellerApi\Exceptions\FormatException;
-use Mobian\ResellerApi\Responses\AbstractResponse;
-use Mobian\ResellerApi\Responses\EmptyResponse;
-use Mobian\ResellerApi\Responses\FailedResponse;
-use Mobian\ResellerApi\Responses\JsonResponse;
-use Mobian\ResellerApi\Responses\PlainTextResponse;
+use Mobian\ApiClient\Exceptions\FormatException;
+use Mobian\ApiClient\Responses\AbstractResponse;
+use Mobian\ApiClient\Responses\EmptyResponse;
+use Mobian\ApiClient\Responses\FailedResponse;
+use Mobian\ApiClient\Responses\JsonResponse;
+use Mobian\ApiClient\Responses\PlainTextResponse;
 
 class ResponseFactory
 {

@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mobian\\ResellerApi\\": "src"
+            "Mobian\\ApiClient\\": "src"
         }
     },
     "autoload-dev": {

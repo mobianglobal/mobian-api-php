@@ -1,4 +1,4 @@
-# MOBIAN Global, Reseller API for PHP
+# MOBIAN API Client for PHP
 
 The MOBIAN Reseller API can be used to book various travel services. For the resellers we tend to make the integration as easy as possible by setting up a default package. This should take care of the default requests and validations on the API side.
 
@@ -6,13 +6,12 @@ This package is actively maintained with the API's versions to make switching be
 
 Necessities for the package;
 
-* PHP 5.6 or higher
+* PHP 7.1 or higher
 * cURL
 
 ## Install
 
-The recommended way to install the package is through
-[Composer](http://getcomposer.org).
+The recommended way to install the package is through [Composer](http://getcomposer.org).
 
 ```bash
 composer require mobianglobal/reseller-api-php
@@ -33,16 +32,16 @@ composer update mobianglobal/reseller-api-php
 ## Example usage
 
 ```
-use Mobian\ResellerApi\ApiClient;
-use Mobian\ResellerApi\ApiConfig;
-use Mobian\ResellerApi\Requests\Bookings\FetchAll as FetchBookingsRequest;
+use Mobian\ApiClient\MobianApiClient;
+use Mobian\ApiClient\MobianApiConfig;
+use Mobian\ApiClient\Requests\Bookings\GetBookingsRequest;
 
 // Setup reseller authentication key
-ApiConfig::setAuthKey('RESELLER_KEY_HERE');
+MobianApiConfig::setAuthKey('RESELLER_KEY_HERE');
 
-$request = new FetchBookingsRequest([
+$request = new GetBookingsRequest([
     'order_id' => 1234567890,
 ]);
 
-$bookings = ApiClient::request($request);
+$bookings = MobianApiClient::request($request);
 ```

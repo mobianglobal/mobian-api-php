@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Bookings;
+namespace Mobian\ApiClient\Requests\Bookings;
 
-use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ApiClient\Requests\AbstractRequest;
 
 class GetVoucherRequest extends AbstractRequest
 {

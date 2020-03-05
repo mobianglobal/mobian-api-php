@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Funnels;
+namespace Mobian\ApiClient\Requests\Funnels;
 
-use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ApiClient\Requests\AbstractRequest;
 
 class GetCampaignsRequest extends AbstractRequest
 {

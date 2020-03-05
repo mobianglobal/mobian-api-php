@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Bookings\Amend\Transactions;
+namespace Mobian\ApiClient\Requests\Bookings\Amend\Transactions;
 
-use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ApiClient\Requests\AbstractRequest;
 
 class CreateBookingTransactionRequest extends AbstractRequest
 {

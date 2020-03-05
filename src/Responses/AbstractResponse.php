@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobian\ResellerApi\Responses;
+namespace Mobian\ApiClient\Responses;
 
 abstract class AbstractResponse
 {

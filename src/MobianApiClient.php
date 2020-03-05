@@ -1,13 +1,13 @@
 <?php
 
-namespace Mobian\ResellerApi;
+namespace Mobian\ApiClient;
 
-use Mobian\ResellerApi\Adapters\CurlAdapter;
-use Mobian\ResellerApi\Exceptions\ClientException;
-use Mobian\ResellerApi\Exceptions\ServerException;
-use Mobian\ResellerApi\Requests\AbstractRequest;
-use Mobian\ResellerApi\Responses\AbstractResponse;
-use Mobian\ResellerApi\Responses\JsonResponse;
+use Mobian\ApiClient\Adapters\CurlAdapter;
+use Mobian\ApiClient\Exceptions\ClientException;
+use Mobian\ApiClient\Exceptions\ServerException;
+use Mobian\ApiClient\Requests\AbstractRequest;
+use Mobian\ApiClient\Responses\AbstractResponse;
+use Mobian\ApiClient\Responses\JsonResponse;
 
 class MobianApiClient
 {
@@ -23,7 +23,9 @@ class MobianApiClient
      */
     public static function request(AbstractRequest $request)
     {
-        $response = array_shift(self::multi([$request]));
+        $responses = self::multi([$request]);
+
+        $response = array_shift($responses);
 
         // Throw client exceptions
         if ($response->isClientError()) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobian\ResellerApi\Responses;
+namespace Mobian\ApiClient\Responses;
 
 class EmptyResponse extends AbstractResponse
 {

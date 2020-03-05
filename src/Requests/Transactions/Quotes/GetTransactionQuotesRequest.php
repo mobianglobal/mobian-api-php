@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Transactions\Quotes;
+namespace Mobian\ApiClient\Requests\Transactions\Quotes;
 
-use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ApiClient\Requests\AbstractRequest;
 
 class GetTransactionQuotesRequest extends AbstractRequest
 {

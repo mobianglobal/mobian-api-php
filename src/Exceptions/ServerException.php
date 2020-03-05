@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobian\ResellerApi\Exceptions;
+namespace Mobian\ApiClient\Exceptions;
 
 class ServerException extends MobianApiException
 {

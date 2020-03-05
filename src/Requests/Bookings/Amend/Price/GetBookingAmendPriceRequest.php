@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Bookings\Amend\Price;
+namespace Mobian\ApiClient\Requests\Bookings\Amend\Price;
 
-use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ApiClient\Requests\AbstractRequest;
 
 class GetBookingAmendPriceRequest extends AbstractRequest
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Transactions;
+namespace Mobian\ApiClient\Requests\Transactions;
 
-use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ApiClient\Requests\AbstractRequest;
 
 class GetTransactionRequest extends AbstractRequest
 {

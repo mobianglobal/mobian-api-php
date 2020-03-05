@@ -1,8 +1,8 @@
 <?php
 
-namespace Mobian\ResellerApi\Requests\Properties;
+namespace Mobian\ApiClient\Requests\Properties;
 
-use Mobian\ResellerApi\Requests\AbstractRequest;
+use Mobian\ApiClient\Requests\AbstractRequest;
 
 class GetPropertiesRequest extends AbstractRequest
 {
