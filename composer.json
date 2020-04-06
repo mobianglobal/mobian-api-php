@@ -1,6 +1,6 @@
 {
-    "name": "mobianglobal/reseller-api",
-    "description": "MOBIAN Global Reseller API package.",
+    "name": "mobianglobal/mobian-api-php",
+    "description": "MOBIAN Global API package for PHP.",
     "license": "MIT",
     "homepage": "https://mobian.global/",
     "authors": [
