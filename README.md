@@ -1,47 +1,44 @@
 # MOBIAN API Client for PHP
 
-The MOBIAN Reseller API can be used to book various travel services. For the resellers we tend to make the integration as easy as possible by setting up a default package. This should take care of the default requests and validations on the API side.
+The MOBIAN API Client for PHP can be used to book various mobility services on the MOBIAN platform. We tend to make the integration as easy as possible by setting up this package. It should take care of the default requests and validations for the API connection to be setup.
 
 This package is actively maintained with the API's versions to make switching between versions less of a pain as well.
 
-Necessities for the package;
+## Requirements
 
 * PHP 7.1 or higher
 * cURL
+* MOBIAN API access
 
-## Install
+## Composer installation
 
-The recommended way to install the package is through [Composer](http://getcomposer.org).
+By far the easiest way to install the package is to require it with [Composer](http://getcomposer.org).
 
 ```bash
-composer require mobianglobal/reseller-api-php
+composer require mobianglobal/mobian-api-php
 ```
 
-After installing, make sure you require Composer's autoloader:
+## Getting started
+
+Set up the configuration to use your API key.
 
 ```php
-require 'vendor/autoload.php';
-```
-
-You can then later update the package using composer:
-
- ```bash
-composer update mobianglobal/reseller-api-php
- ```
-
-## Example usage
-
-```
-use Mobian\ApiClient\MobianApiClient;
 use Mobian\ApiClient\MobianApiConfig;
+
+MobianApiConfig::setAuthKey('RESELLER_KEY_HERE');
+```
+
+Fetching a set of bookings with a reservation status of `completed`.
+
+```php
+use Mobian\ApiClient\MobianApiClient;
 use Mobian\ApiClient\Requests\Bookings\GetBookingsRequest;
 
-// Setup reseller authentication key
-MobianApiConfig::setAuthKey('RESELLER_KEY_HERE');
-
 $request = new GetBookingsRequest([
-    'order_id' => 1234567890,
+    'reservation_status' => ['completed'],
 ]);
 
 $bookings = MobianApiClient::request($request);
 ```
+
+All available calls and filters are explained in our [API documentation](https://mobianv3reseller.docs.apiary.io/).
