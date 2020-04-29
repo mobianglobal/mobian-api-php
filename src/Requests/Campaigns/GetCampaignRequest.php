@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobian\ApiClient\Requests\Funnels;
+namespace Mobian\ApiClient\Requests\Campaigns;
 
 use Mobian\ApiClient\Requests\AbstractRequest;
 
