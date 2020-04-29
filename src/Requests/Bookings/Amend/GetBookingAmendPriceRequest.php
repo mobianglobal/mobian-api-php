@@ -1,6 +1,6 @@
 <?php
 
-namespace Mobian\ApiClient\Requests\Bookings\Amend\Price;
+namespace Mobian\ApiClient\Requests\Bookings\Amend;
 
 use Mobian\ApiClient\Requests\AbstractRequest;
 

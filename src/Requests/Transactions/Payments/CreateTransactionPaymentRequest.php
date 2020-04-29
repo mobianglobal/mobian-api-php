@@ -4,7 +4,7 @@ namespace Mobian\ApiClient\Requests\Transactions\Payments;
 
 use Mobian\ApiClient\Requests\AbstractRequest;
 
-class CreateTransactionPayment extends AbstractRequest
+class CreateTransactionPaymentRequest extends AbstractRequest
 {
     /**
      * @inheritdoc

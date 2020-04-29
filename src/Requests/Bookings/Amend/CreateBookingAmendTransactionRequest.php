@@ -1,10 +1,10 @@
 <?php
 
-namespace Mobian\ApiClient\Requests\Bookings\Amend\Transactions;
+namespace Mobian\ApiClient\Requests\Bookings\Amend;
 
 use Mobian\ApiClient\Requests\AbstractRequest;
 
-class CreateBookingTransactionRequest extends AbstractRequest
+class CreateBookingAmendTransactionRequest extends AbstractRequest
 {
     /**
      * @inheritdoc
