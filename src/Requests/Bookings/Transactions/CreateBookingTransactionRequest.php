@@ -20,9 +20,13 @@ class CreateBookingTransactionRequest extends AbstractRequest
      * Constructor.
      *
      * @param int $identifier
+     * @param array $contents
      */
-    public function __construct(int $identifier)
+    public function __construct(int $identifier, array $contents = [])
     {
         $this->endpoint = sprintf($this->endpoint, $identifier);
+
+        // TODO: Implement content validation
+        $this->contents = $contents;
     }
 }
