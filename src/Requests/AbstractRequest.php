@@ -33,7 +33,7 @@ abstract class AbstractRequest
     public const METHOD_PUT = 'put';
 
     /**
-     * Update method HTTP verb.
+     * Request method HTTP verb.
      *
      * @var string
      */
