@@ -154,7 +154,7 @@ class CurlAdapter
 
         $response = mb_substr($response, $headerSize);
 
-        return ResponseFactory::make($response, $responseContentType, $responseCode);
+        return ResponseFactory::make($response, $responseCode, $responseContentType);
     }
 
     /**

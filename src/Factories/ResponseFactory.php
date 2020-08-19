@@ -15,14 +15,14 @@ class ResponseFactory
      * Creates the appropriate response class for the response.
      *
      * @param string $response
-     * @param string $contentType
      * @param int $statusCode
+     * @param string $contentType
      *
      * @throws FormatException
      *
      * @return AbstractResponse
      */
-    public static function make(string $response, string $contentType, int $statusCode)
+    public static function make(string $response, int $statusCode, string $contentType = null)
     {
         if (empty($response)) {
             return new EmptyResponse($statusCode);
