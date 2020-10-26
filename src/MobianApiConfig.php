@@ -9,14 +9,7 @@ class MobianApiConfig
      *
      * @var string
      */
-    public const VERSION = '1.0.3';
-
-    /**
-     * API authentication identifier.
-     *
-     * @var string
-     */
-    public const DEFAULT_AUTH_IDENTIFIER = 'Api-Key';
+    public const VERSION = '1.1.0';
 
     /**
      * API default hostname.
@@ -33,13 +26,6 @@ class MobianApiConfig
     public const DEFAULT_LANGUAGE = 'en';
 
     /**
-     * Authentication identifier.
-     *
-     * @var string
-     */
-    private static $authIdentifier = self::DEFAULT_AUTH_IDENTIFIER;
-
-    /**
      * Authentication key.
      *
      * @var string
@@ -54,6 +40,13 @@ class MobianApiConfig
     private static $currency;
 
     /**
+     * Custom headers.
+     *
+     * @var array
+     */
+    private static $customHeaders = [];
+
+    /**
      * Host where the MOBIAN API is located.
      *
      * @var string
@@ -66,26 +59,6 @@ class MobianApiConfig
      * @var string
      */
     private static $language = self::DEFAULT_LANGUAGE;
-
-    /**
-     * Set the auth identifier for future requests.
-     *
-     * @param string $authIdentifier
-     */
-    public static function setAuthIdentifier(string $authIdentifier)
-    {
-        self::$authIdentifier = $authIdentifier;
-    }
-
-    /**
-     * Get the current auth identifier.
-     *
-     * @return string
-     */
-    public static function getAuthIdentifier()
-    {
-        return self::$authIdentifier;
-    }
 
     /**
      * Set the auth key for future requests.
@@ -125,6 +98,26 @@ class MobianApiConfig
     public static function getCurrency()
     {
         return self::$currency;
+    }
+
+    /**
+     * Set the custom headers for future requests.
+     *
+     * @param array $headers
+     */
+    public static function setCustomHeaders(array $headers)
+    {
+        self::$customHeaders = $headers;
+    }
+
+    /**
+     * Get the custom headers.
+     *
+     * @return array
+     */
+    public static function getCustomHeaders()
+    {
+        return self::$customHeaders;
     }
 
     /**
@@ -174,8 +167,8 @@ class MobianApiConfig
     {
         self::$authKey = null;
 
-        self::$authIdentifier = self::DEFAULT_AUTH_IDENTIFIER;
         self::$currency = null;
+        self::$customHeaders = [];
         self::$hostname = self::DEFAULT_HOST_NAME;
         self::$language = self::DEFAULT_LANGUAGE;
     }
