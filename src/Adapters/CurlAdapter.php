@@ -95,8 +95,6 @@ class CurlAdapter
         $url = $this->buildUrlForRequest($request);
         $method = mb_strtoupper($request->getMethod());
 
-        $identificationHeader = sprintf('%s: %s', 'Api-Key', MobianApiConfig::getAuthKey());
-
         $options = [
             CURLOPT_HEADER => 1,
             CURLOPT_RETURNTRANSFER => 1,
@@ -105,11 +103,9 @@ class CurlAdapter
             CURLOPT_HTTPHEADER => array_merge(MobianApiConfig::getCustomHeaders(), [
                 'Accept: application/json',
                 'Accept-Language: ' . MobianApiConfig::getLanguage(),
+                'Api-Key: ' . MobianApiConfig::getAuthKey(),
                 'Content-Type: application/json',
                 'User-Agent: mobian-reseller-package/' . MobianApiConfig::VERSION,
-
-                // Add identification header
-                $identificationHeader,
             ]),
         ];
 
