@@ -114,7 +114,7 @@ class CurlAdapter
         ];
 
         // Add custom headers if given.
-        $customHeaders = MobianApiConfig::getCustomeHeaders();
+        $customHeaders = MobianApiConfig::getCustomHeaders();
         if (count($customHeaders) > 0) {
             $options[CURLOPT_HTTPHEADER] = array_merge($customHeaders, $options[CURLOPT_HTTPHEADER]);
         }
