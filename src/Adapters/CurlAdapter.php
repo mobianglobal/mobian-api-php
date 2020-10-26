@@ -95,14 +95,14 @@ class CurlAdapter
         $url = $this->buildUrlForRequest($request);
         $method = mb_strtoupper($request->getMethod());
 
-        $identificationHeader = sprintf('%s: %s', MobianApiConfig::getAuthIdentifier(), MobianApiConfig::getAuthKey());
+        $identificationHeader = sprintf('%s: %s', 'Api-Key', MobianApiConfig::getAuthKey());
 
         $options = [
             CURLOPT_HEADER => 1,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_URL => $url,
-            CURLOPT_HTTPHEADER => [
+            CURLOPT_HTTPHEADER => array_merge(MobianApiConfig::getCustomHeaders(), [
                 'Accept: application/json',
                 'Accept-Language: ' . MobianApiConfig::getLanguage(),
                 'Content-Type: application/json',
@@ -110,14 +110,8 @@ class CurlAdapter
 
                 // Add identification header
                 $identificationHeader,
-            ],
+            ]),
         ];
-
-        // Add custom headers if given.
-        $customHeaders = MobianApiConfig::getCustomHeaders();
-        if (count($customHeaders) > 0) {
-            $options[CURLOPT_HTTPHEADER] = array_merge($customHeaders, $options[CURLOPT_HTTPHEADER]);
-        }
 
         // Add Accept-Currency header if given.
         if ($currency = MobianApiConfig::getCurrency()) {
