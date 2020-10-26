@@ -113,6 +113,12 @@ class CurlAdapter
             ],
         ];
 
+        // Add custom headers if given.
+        $customHeaders = MobianApiConfig::getCustomeHeaders();
+        if (count($customHeaders) > 0) {
+            $options[CURLOPT_HTTPHEADER] = array_merge($customHeaders, $options[CURLOPT_HTTPHEADER]);
+        }
+
         // Add Accept-Currency header if given.
         if ($currency = MobianApiConfig::getCurrency()) {
             $options[CURLOPT_HTTPHEADER][] = sprintf('Accept-Currency: %s', $currency);

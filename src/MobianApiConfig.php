@@ -9,7 +9,7 @@ class MobianApiConfig
      *
      * @var string
      */
-    public const VERSION = '1.0.3';
+    public const VERSION = '1.0.5';
 
     /**
      * API authentication identifier.
@@ -52,6 +52,13 @@ class MobianApiConfig
      * @var string
      */
     private static $currency;
+
+    /**
+     * Custom headers.
+     *
+     * @var array
+     */
+    private static $customHeaders = [];
 
     /**
      * Host where the MOBIAN API is located.
@@ -128,6 +135,26 @@ class MobianApiConfig
     }
 
     /**
+     * Set the custom headers for future requests.
+     *
+     * @param array $headers
+     */
+    public static function setCustomHeaders(array $headers)
+    {
+        self::$customHeaders = $headers;
+    }
+
+    /**
+     * Get the custom headers.
+     *
+     * @return array
+     */
+    public static function getCustomHeaders()
+    {
+        return self::$customHeaders;
+    }
+
+    /**
      * Set the hostname for future requests.
      *
      * @param string $hostname
@@ -176,6 +203,7 @@ class MobianApiConfig
 
         self::$authIdentifier = self::DEFAULT_AUTH_IDENTIFIER;
         self::$currency = null;
+        self::$customHeaders = [];
         self::$hostname = self::DEFAULT_HOST_NAME;
         self::$language = self::DEFAULT_LANGUAGE;
     }
