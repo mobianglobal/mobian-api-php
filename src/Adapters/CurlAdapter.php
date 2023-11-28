@@ -50,6 +50,9 @@ class CurlAdapter
         $running = null;
         do {
             curl_multi_exec($multiHandle, $running);
+            if ($running) {
+                curl_multi_select($multiHandle);
+            }
         } while ($running);
 
         $curlResponses = [];
